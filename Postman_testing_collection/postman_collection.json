@@ -1,0 +1,1143 @@
+{
+	"info": {
+		"_postman_id": "986ed62e-2041-485b-812a-4dcb0fffba31",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12077605"
+	},
+	"item": [
+		{
+			"name": "MoviesApi",
+			"item": [
+				{
+					"name": "Local or Docker",
+					"item": [
+						{
+							"name": "Movie Info",
+							"item": [
+								{
+									"name": "Movie Info With Bes Picture Oscar Info",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8080/movie/bestpictureoscar/The Hurt Locker",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"movie",
+												"bestpictureoscar",
+												"The Hurt Locker"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aXZlayBiYWJ1Iiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfTUFOQUdFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvbG9naW4iLCJleHAiOjE2NjUzMTU4Mjd9.2CPzKBU-048fM6yoooRVzF7kATbLTpphy8yy8FFm-2U",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Top 10 Movies based on Rating sorted with Box office value",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8080/movie/top10movies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"movie",
+												"top10movies"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Movie Rating",
+							"item": [
+								{
+									"name": "Add Rating with imdb id",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"imdbId\": \"tt1174732\",\r\n    \"rating\": 7.5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/rating/imdb",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"rating",
+												"imdb"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Rating to Movie with Title",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\" : \"The Love Parade\",\r\n    \"rating\" : 8.0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/rating/title",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"rating",
+												"title"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Rating Based on Id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8080/rating/imdb/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"rating",
+												"imdb",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "General",
+							"item": [
+								{
+									"name": "Upload Oscare info CSV",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/Users/x019504/Downloads/academy_awards.csv"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:8080/upload/best-picture-oscar-csv-file",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"upload",
+												"best-picture-oscar-csv-file"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "User Role Management",
+							"item": [
+								{
+									"name": "Get List of Users",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8080/management/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"management",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create New User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"saranya\",\r\n    \"userName\":\"saranya arumugam\",\r\n    \"password\":\"admin\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/management/user/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"management",
+												"user",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create New Role",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"ROLE_TEST\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/management/role/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"management",
+												"role",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Role To User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userName\":\"saranya arumugam\",\r\n    \"roleName\":\"ROLE_ADMIN\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/management/role/addtouser",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"management",
+												"role",
+												"addtouser"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Token Generation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonResponse = pm.response.json();\r",
+											"pm.environment.unset(\"variable_key\");\r",
+											"pm.environment.set(\"bearer\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "vivek",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Kubernetes",
+					"item": [
+						{
+							"name": "Movie Info",
+							"item": [
+								{
+									"name": "Movie Info With Bes Picture Oscar Info",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://localhost:30001/movie/bestpictureoscar/The Hurt Locker",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"movie",
+												"bestpictureoscar",
+												"The Hurt Locker"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aXZlayBiYWJ1Iiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfTUFOQUdFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvbG9naW4iLCJleHAiOjE2NjUzMTU4Mjd9.2CPzKBU-048fM6yoooRVzF7kATbLTpphy8yy8FFm-2U",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Top 10 Movies based on Rating sorted with Box office value",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://localhost:30001/movie/top10movies",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"movie",
+												"top10movies"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Movie Rating",
+							"item": [
+								{
+									"name": "Add Rating with imdb id",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "title",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"imdbId\": \"tt1174732\",\r\n    \"rating\": 7.5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:30001/rating/imdb",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"rating",
+												"imdb"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Rating to Movie with Title",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\" : \"The Love Parade\",\r\n    \"rating\" : 8.0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:30001/rating/title",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"rating",
+												"title"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Rating Based on Id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:30001/rating/imdb/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"rating",
+												"imdb",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "General",
+							"item": [
+								{
+									"name": "Upload Oscare info CSV",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											},
+											{
+												"key": "test",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/Users/x019504/Downloads/academy_awards.csv"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:30001/upload/best-picture-oscar-csv-file",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"upload",
+												"best-picture-oscar-csv-file"
+											],
+											"query": [
+												{
+													"key": "Authorization",
+													"value": "Basic c2e36ae8-068d-408f-b7f1-1aeddc4a542f",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "user",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "User Role Management",
+							"item": [
+								{
+									"name": "Get List of Users",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:30001/management/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"management",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create New User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"saranya\",\r\n    \"userName\":\"saranya arumugam\",\r\n    \"password\":\"admin\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:30001/management/user/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"management",
+												"user",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create New Role",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"ROLE_TEST\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:30001/management/role/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"management",
+												"role",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Role To User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{bearer}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userName\":\"saranya arumugam\",\r\n    \"roleName\":\"ROLE_ADMIN\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:30001/management/role/addtouser",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "30001",
+											"path": [
+												"management",
+												"role",
+												"addtouser"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Token Generation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonResponse = pm.response.json();\r",
+											"pm.environment.unset(\"variable_key\");\r",
+											"pm.environment.set(\"bearer\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "vivek",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:30001/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "30001",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OmdbService",
+					"item": [
+						{
+							"name": "SearchWithTitle",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://www.omdbapi.com/?apikey=e5c7611&t=The Hurt Locker&r=json&plot=full",
+									"protocol": "http",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e5c7611"
+										},
+										{
+											"key": "t",
+											"value": "The Hurt Locker"
+										},
+										{
+											"key": "r",
+											"value": "json"
+										},
+										{
+											"key": "plot",
+											"value": "full"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SearchWithImdbId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://www.omdbapi.com/?apikey=e5c7611&i=tt0887912&r=json",
+									"protocol": "http",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e5c7611"
+										},
+										{
+											"key": "i",
+											"value": "tt0887912"
+										},
+										{
+											"key": "r",
+											"value": "json"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

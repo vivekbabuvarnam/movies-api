@@ -1,0 +1,677 @@
+{
+    "components": {
+        "schemas": {
+            "AppRole": {
+                "properties": {
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AppUser": {
+                "properties": {
+                    "appRoles": {
+                        "items": {
+                            "$ref": "#/components/schemas/AppRole"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ErrorResponse": {
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "fields": {
+                        "items": {
+                            "$ref": "#/components/schemas/FieldError"
+                        },
+                        "type": "array"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "subErrors": {
+                        "items": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "FieldError": {
+                "properties": {
+                    "arguments": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "bindingFailure": {
+                        "type": "boolean"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "codes": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "defaultMessage": {
+                        "type": "string"
+                    },
+                    "field": {
+                        "type": "string"
+                    },
+                    "objectName": {
+                        "type": "string"
+                    },
+                    "rejectedValue": {
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ImdbIdRatingForm": {
+                "properties": {
+                    "imdbId": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "exclusiveMaximum": false,
+                        "exclusiveMinimum": true,
+                        "format": "double",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "imdbId"
+                ],
+                "type": "object"
+            },
+            "Link": {
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MovieDataView": {
+                "properties": {
+                    "addRatingLink": {
+                        "$ref": "#/components/schemas/Link"
+                    },
+                    "awardName": {
+                        "type": "string"
+                    },
+                    "boxOffice": {
+                        "type": "string"
+                    },
+                    "deleteRatingLink": {
+                        "$ref": "#/components/schemas/Link"
+                    },
+                    "imdbId": {
+                        "type": "string"
+                    },
+                    "imdbRating": {
+                        "type": "string"
+                    },
+                    "oscar": {
+                        "items": {
+                            "$ref": "#/components/schemas/OscarData"
+                        },
+                        "type": "array"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "uploadBestPictureOscarWonCsvFeed": {
+                        "$ref": "#/components/schemas/Link"
+                    },
+                    "viewTopTenMovieLink": {
+                        "$ref": "#/components/schemas/Link"
+                    }
+                },
+                "type": "object"
+            },
+            "OscarData": {
+                "properties": {
+                    "oscarName": {
+                        "type": "string"
+                    },
+                    "won": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "RoleToUserForm": {
+                "properties": {
+                    "roleName": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TitleRatingForm": {
+                "properties": {
+                    "rating": {
+                        "exclusiveMaximum": false,
+                        "exclusiveMinimum": true,
+                        "format": "double",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "type": "number"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "title"
+                ],
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "Bearer Authentication": {
+                "bearerFormat": "JWT",
+                "scheme": "bearer",
+                "type": "http"
+            }
+        }
+    },
+    "info": {
+        "contact": {
+            "email": "vivekbabu.vvv@gmail.com",
+            "name": "vivek"
+        },
+        "description": "This gives information about a Movie. You can give rating to a movie You Can View Top 10 rated movie sorted on box officeThis API is projected by JWT OAuth2",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "title": "Movies API",
+        "version": "1.0.0"
+    },
+    "openapi": "3.0.1",
+    "paths": {
+        "/management/role/addtouser": {
+            "post": {
+                "operationId": "addUserToRole",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleToUserForm"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {}
+                        },
+                        "description": "Empty Response"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Add Role to the User; Role Required: ROLE_MANAGER or ROLE_ADMIN",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/management/role/save": {
+            "post": {
+                "operationId": "saveRole",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppRole"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppRole"
+                                }
+                            }
+                        },
+                        "description": "Return the created Role"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Register the new Role; Role Can be (ROLE_MANAGER or ROLE_ADMIN or ROLE_USER), Role Required: ROLE_MANAGER or ROLE_ADMIN",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/management/user/save": {
+            "post": {
+                "operationId": "saveUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppUser"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppUser"
+                                }
+                            }
+                        },
+                        "description": "Return the created User"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Register the new user; Role Required: ROLE_MANAGER or ROLE_ADMIN",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/management/users": {
+            "get": {
+                "operationId": "getUsers",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppUser"
+                                }
+                            }
+                        },
+                        "description": " Return the List of Users"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Get List of All Registered Users; Role Required: ROLE_MANAGER or ROLE_ADMIN",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/movie/bestpictureoscar/{title}": {
+            "get": {
+                "operationId": "getBestPictureOscarDetails",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovieDataView"
+                                }
+                            }
+                        },
+                        "description": " Return the Picture information with Best Picture oscar info"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Gets info about the movie title with information on Whether it got Best Picture Oscar; Role Required: ROLE_USER",
+                "tags": [
+                    "movie-info-controller"
+                ]
+            }
+        },
+        "/movie/top10movies": {
+            "get": {
+                "operationId": "getTopTenMovies",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": " Return the top 10 movies based on the Rating given in this API sorted by box office value"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Gets the top 10 movies based on the Rating given in this API. Also it sorts them in the descending order of Box office value, N/A in box office value will be kept at the; Role Required: ROLE_USER",
+                "tags": [
+                    "movie-info-controller"
+                ]
+            }
+        },
+        "/rating/imdb": {
+            "post": {
+                "operationId": "postRatingWithImdbId",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ImdbIdRatingForm"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovieDataView"
+                                }
+                            }
+                        },
+                        "description": " Returns the Resource information which got created/updated"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Post the Rating of the movie based on the Imdb Id; Role Required: ROLE_USER",
+                "tags": [
+                    "rating-controller"
+                ]
+            }
+        },
+        "/rating/imdb/{id}": {
+            "delete": {
+                "operationId": "deleteRatingBasedOnId",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovieDataView"
+                                }
+                            }
+                        },
+                        "description": " Empty success message if the delete was successful"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Delete the rating given based on the Resource Id. It won't delete if the userKey of the resource not matches with the userKey; Role Required: ROLE_USER",
+                "tags": [
+                    "rating-controller"
+                ]
+            }
+        },
+        "/rating/title": {
+            "post": {
+                "operationId": "postRatingWithTitle",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TitleRatingForm"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovieDataView"
+                                }
+                            }
+                        },
+                        "description": " Returns the Resource information which got created/updated"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "Post the Rating of the movie based on the Title; Role Required: ROLE_USER",
+                "tags": [
+                    "rating-controller"
+                ]
+            }
+        },
+        "/upload/best-picture-oscar-csv-file": {
+            "post": {
+                "operationId": "uploadCSVFile",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "format": "binary",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "file"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": " File Uploaded Successfully"
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {}
+                        },
+                        "description": "Internal Server Exception"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Authentication": []
+                    }
+                ],
+                "summary": "If any Changes in the Oscar CSV information, then you can upload the file here; Role Required: ROLE_ADMIN",
+                "tags": [
+                    "csv-file-upload-controller"
+                ]
+            }
+        }
+    },
+    "servers": [
+        {
+            "description": "Production",
+            "url": "http://localhost:8080"
+        }
+    ]
+}

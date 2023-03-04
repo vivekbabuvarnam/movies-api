@@ -1,0 +1,11 @@
+kubectl apply -f poddeploymentservices_db.yaml
+
+connect to this using
+localhost:30002
+user/admin
+
+Only port above 30000 can assigned since we have used NODEPORT service
+
+To Shut down
+************
+kubectl down -f poddeploymentservices_db.yaml --volumes

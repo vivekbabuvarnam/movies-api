@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moviesapi-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: moviesapi-pod
+  template:
+    metadata:
+      labels:
+        bb: moviesapi-pod
+    spec:
+      containers:
+        - name: moviesapi-kub-container
+          image: moviesapi
+          imagePullPolicy: Never
+          env:
+            - name: ENVIRONMENT
+              value: live
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moviesapi-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    bb: moviesapi-pod
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001

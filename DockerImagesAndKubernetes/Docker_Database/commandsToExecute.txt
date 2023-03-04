@@ -1,0 +1,15 @@
+docker build -t my-postgres-db ./
+
+docker run -d --name my-postgresdb-container -p 54320:5432 my-postgres-db
+
+Connect to this use 
+localhost:54320
+user/admin
+
+To stop this Container
+*********************
+docker stop my-postgresdb-container
+
+To remove the image
+*******************
+docker rm postgres

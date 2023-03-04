@@ -1,0 +1,14 @@
+docker build -t moviesapi ./
+
+docker run -d --name moviesapi-container -p 8080:8080 moviesapi
+
+Connect to this use 
+localhost:8080
+
+To stop this Container
+*********************
+docker stop moviesapi-container
+
+To remove the image
+*******************
+docker rm moviesapi
